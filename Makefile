@@ -17,12 +17,13 @@ printf/printf.a:
 	make -C printf
 
 objs/%.o: srcs/%.c includes/so_long.h
+	mkdir -p objs
 	$(CC) $(CFLAGS) -I includes -I printf -I libft -c $< -o $@
 
 clean:
 	make -C libft clean
 	make -C printf clean
-	rm -f $(OBJS)
+	rm -rf objs
 
 fclean: clean
 	make -C libft fclean

@@ -6,7 +6,7 @@
 /*   By: lesantos <lesantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 19:37:25 by lesantos          #+#    #+#             */
-/*   Updated: 2022/05/30 02:39:45 by lesantos         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:17:39 by lesantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*load_map(char *map_name, t_data *data)
 static int	open_map_file(char *map_name)
 {
 	size_t	name_len;
-	char	*map_path;
 	int		fd;
 
 	name_len = ft_strlen(map_name);
@@ -42,9 +41,7 @@ static int	open_map_file(char *map_name)
 		ft_printf("Wrong file extension.\n");
 		exit(1);
 	}
-	map_path = ft_strjoin("maps/", map_name);
-	fd = open(map_path, O_RDONLY);
-	free(map_path);
+	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_printf("Unable to open given map file.\n");
